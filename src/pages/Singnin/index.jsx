@@ -2,12 +2,13 @@ import { useState } from "react";
 import { GoogleLogo } from "@phosphor-icons/react";
 
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../../services/firebase.ts";
+import { auth } from "../../services/firebase.js";
 
 import "./styles.scss";
 
 export function SignIn() {
   const [user, setUser] = useState({});
+  const { photoURL } = user;
 
   function handleGoogleSingIn() {
     const provider = new GoogleAuthProvider();
@@ -24,17 +25,17 @@ export function SignIn() {
   return (
     <div className="container">
       <div className="user">
-        {user.photoURL && <img src={user.photoURL} alt="Foto do usuario" />}
+        {photoURL && <img src={photoURL} alt="Foto do usuario" />}
         <strong>{user.displayName}</strong>
         <small>{user.email}</small>
       </div>
 
-      <h1>Acesse sua cointa</h1>
+      <h1>Acesse sua conta</h1>
 
       <span>
         Utilizando autenticação social, por exemplo, auntenticaçao com a google
-        vocÊ <br />
-        facilita a vida do usuario permitidno utilizar sua apkciaçao sem fazer
+        você <br />
+        facilita a vida do usuario permitindo utilizar sua aplciaçao sem fazer
         cadastro
       </span>
 
